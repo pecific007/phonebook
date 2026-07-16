@@ -31,8 +31,32 @@ def select_all():
 
 
 @db_manage
-def select_Contact_data(id: int):
+def select_Contact_data(id):
     data = Contact.query().select("*").where(C("id", "=", id)).exec().fetchone()
+    return data
+
+
+@db_manage
+def search_contact_name(term):
+    data = (
+        Contact.query()
+        .select("*")
+        .where(C("name", "LIKE", "%" + term + "%"))
+        .exec()
+        .fetchall()
+    )
+    return data
+
+
+@db_manage
+def search_contact_number(term):
+    data = (
+        Contact.query()
+        .select("*")
+        .where(C("number", "LIKE", "%" + term + "%"))
+        .exec()
+        .fetchall()
+    )
     return data
 
 

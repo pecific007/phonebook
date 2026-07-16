@@ -40,10 +40,6 @@
     color: #FFFFFF;
 }
 
-.contact-title {
-    font-size: var(--font-size-title);
-}
-
 .add-form {
     padding: var(--main-padding);
     display: flex;
@@ -61,8 +57,16 @@
 
 .contact-title {
     display: flex;
+    font-size: var(--font-size-title);
     justify-content: space-between;
+    align-items: center;
     /* padding: var(--title-padding); */
+}
+
+.generic-form {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 table * {

@@ -3,6 +3,8 @@ from database import (
     delete_contact,
     delete_data,
     insert_data,
+    search_contact_name,
+    search_contact_number,
     select_Contact_data,
     select_all,
     update_number,
@@ -16,6 +18,26 @@ app = Flask(__name__)
 def index_view():
     rows = select_all()
     return render_template("index.html", contacts=rows)
+
+
+@app.route("/search", methods=["GET"])
+def search_view():
+    if request.method == "GET":
+        search_by = request.args.get("search_by")
+        search = request.args.get("search")
+        if search_by == "name":
+            data = search_contact_name(search)
+            if len(data) == 0:
+                return render_template("index.html")
+            return render_template("index.html", contacts=data)
+        elif search_by == "number":
+            data = search_contact_number(search)
+            if len(data) == 0:
+                return render_template("index.html")
+            return render_template("index.html", contacts=data)
+        else:
+            render_template("index.html")
+    return render_template("index.html")
 
 
 @app.route("/add", methods=["GET", "POST"])
@@ -47,6 +69,9 @@ def delete_all_endpoint():
 @app.route("/delete/<int:id>", methods=["GET", "POST"])
 def delete_one_endpoint(id):
     if request.method == "POST":
+        contact = select_Contact_data(id)
+        if len(contact) == 0:
+            return redirect("/")
         delete_contact(id)
         return redirect("/")
     return redirect("/")
