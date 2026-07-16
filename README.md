@@ -16,4 +16,3 @@ to run the flask server. It uses the default port `:5000`
 
 # Screen capture:
 
-[Screen recording of using website](https://raw.githubusercontent.com/pecific007/phonebook/main/screen_capture/phonebook_preview.mp4)
