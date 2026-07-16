@@ -1,0 +1,88 @@
+:root {
+    --blue-background-color: #9E9EFF;
+    --blue-background-gradient: radial-gradient(circle at 30%,#9E9EFF, #FFFFFF00), radial-gradient(circle at 70%,#9E9EFF, #FFFFFF);
+    --main-padding: 5em;
+    --font-size-main: 5em;
+    --font-size-title: 2em;
+    --font-family-headings: Bricolage Grotesque;
+    --font-family-all: Ubuntu;
+    --title-padding: 1em;
+    --gap-distance: 1em;
+}
+
+* {
+    font-family: var(--font-family-all);
+    z-index: 1;
+}
+
+.blue-bg {
+    height: 50vh;
+    background-color: var(--blue-background-color);
+    background-image: var(--blue-background-gradient);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: var(--main-padding);
+    z-index: 1000;
+}
+
+.phonebook {
+    font-size: var(--font-size-main);
+    font-family: var(--font-family-headings);
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.edit {
+    font-size: var(--font-size-main);
+    font-family: var(--font-family-headings);
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.contact-title {
+    font-size: var(--font-size-title);
+}
+
+.add-form {
+    padding: var(--main-padding);
+    display: flex;
+    gap: var(--gap-distance);
+    button {
+        align-self: flex-start;
+    }
+}
+
+.contacts {
+    max-height: 50vh;
+    overflow: auto;
+    padding: var(--title-padding);
+}
+
+.contact-title {
+    display: flex;
+    justify-content: space-between;
+    /* padding: var(--title-padding); */
+}
+
+table * {
+    text-align :center;
+}
+
+.edit-main {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 300px 1fr;
+    gap: 1px;
+    align-items: baseline;
+    justify-content: center;
+}
+.edit-page {
+    display: grid;
+}
+
+.edit-form {
+    display: grid;
+    width: 20vw;
+    gap: 1rem;
+}

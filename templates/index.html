@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="main-page">
+    {% if error %}
+    <h1>{{ error }}</h1>
+    {% endif %}
+    <div class="blue-bg">
+        <h1 class="phonebook">Phonebook</h1>
+        <form class="form-group add-form" action="/add" method="post">
+            <input autofocus type="text" name="name" class="form-control" placeholder="Name">
+            <input type="text" name="number" class="form-control" maxlength=10 placeholder="Phone number">
+            <button class="btn btn-primary">Add</button>
+        </form>
+    </div>
+    <div class="contacts">
+        <div class="contact-title">
+            <span>Contacts:</span><form method="post" action="/delete"><button class="btn btn-danger">Clear all</button></form>
+        </div>
+        {% if contacts %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ contact[1] }}</td>
+                    <td>{{ contact[2] }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_endpoint', id=contact[0]) }}" class="btn btn-info">Edit</a>
+                        <form action="{{ url_for('delete_one_endpoint', id=contact[0]) }}" method="post" style="display: inline;">
+                            <button class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No fiends added.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

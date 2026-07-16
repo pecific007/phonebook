@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="edit-page">
+    {% if error %}
+    <h1>{{ error }}</h1>
+    {% endif %}
+    <div class="blue-bg edit-main">
+        <h1 class="edit">Edit</h1>
+        <form class="form-group edit-form" method="post">
+            <input autofocus type="text" name="name" class="form-control" placeholder="Name" value="{{ contact[1] }}">
+            <input type="text" name="number" class="form-control" maxlength=10 placeholder="Phone number" value="{{ contact[2] }}">
+            <button class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
