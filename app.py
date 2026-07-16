@@ -46,7 +46,9 @@ def delete_all_endpoint():
 
 @app.route("/delete/<int:id>", methods=["GET", "POST"])
 def delete_one_endpoint(id):
-    delete_contact(id)
+    if request.method == "POST":
+        delete_contact(id)
+        return redirect("/")
     return redirect("/")
 
 
