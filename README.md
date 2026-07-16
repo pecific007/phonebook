@@ -10,7 +10,7 @@ Phonebook is a demo for my python library for sqlite3: [plibsqlite](https://gith
 
 ### Run:
 > ```sh
-> $ flask run
+> $ uv run flask run
 > ```
 to run the flask server. It uses the default port `:5000`
 
