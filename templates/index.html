@@ -17,8 +17,8 @@
     <div class="contacts">
         <div class="contact-title">
             <span>Contacts:</span>
-            {% if contacts %}
-            <form action="/search" class="form-group generic-form">
+            {% if contacts or request.path == '/search'  %}
+            <form action="{{ url_for('search_view')}}" class="form-group generic-form">
                 <input type="text" class="form-control" name="search" placeholder="search">
                 <select name="search_by" class="form-select">
                     <option value="name">Name</option>
